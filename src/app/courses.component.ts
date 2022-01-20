@@ -1,3 +1,4 @@
+import { CoursesService } from './course.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -9,7 +10,7 @@ import { Component } from '@angular/core';
   //   '<h2>{{"Course category: " + getTitle() + "(" + courseCount + ")"}}</h2>',
 
   /**
-   * using Directives
+   * using Directives.
    */
   template: `
     <h2>{{ title }}</h2>
@@ -23,7 +24,21 @@ import { Component } from '@angular/core';
 export class CoursesComponent {
   title = 'Mathematics';
   courseCount = '34';
-  courses = ['courses1', 'courses2', 'courses3'];
+  courses;
+
+  /**
+   *
+   * @param coursesService
+   * using CoursesService as DI.
+   * Advantages:
+   */
+  constructor(coursesService: CoursesService) {
+    this.courses = coursesService.getCourses();
+
+    //without DI (tightly couple). Disadvantages - cannot change at run time and also harder to do unit testing.
+    // let coursesService = new CoursesService();
+    // this.courses = coursesService.getCourses();
+  }
 
   getTitle() {
     return this.title;

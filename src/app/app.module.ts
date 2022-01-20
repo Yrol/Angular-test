@@ -1,3 +1,4 @@
+import { CoursesService } from './course.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -9,7 +10,13 @@ import { CourseComponent } from './course/course.component';
 @NgModule({
   declarations: [AppComponent, CoursesComponent, CourseComponent],
   imports: [BrowserModule, AppRoutingModule],
-  providers: [],
+  providers: [
+    /**
+     * Adding the service to be used as a Dependency Injection.
+     * Singleton: Only one instance of this service will be created and will use that across all other components when needed.
+     */
+    CoursesService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
