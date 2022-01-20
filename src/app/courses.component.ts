@@ -3,28 +3,37 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'courses',
-  /**
-   * Interpolation - using "{{}}" is known as string interpolation.
-   */
-  // template:
-  //   '<h2>{{"Course category: " + getTitle() + "(" + courseCount + ")"}}</h2>',
-
-  /**
-   * using Directives.
-   */
   template: `
+    <!-- Using "{{}}" is known as String Interpolation -->
     <h2>{{ title }}</h2>
+
+    <!-- Using Directives -->
     <ul>
       <li *ngFor="let course of courses">
         {{ course }}
       </li>
     </ul>
+
+    <!-- Using property binding (changing the properties of a DOM element in HTML) -->
+    <img [src]="imageSrc" />
+
+    <!--
+      Using property binding when DOM element is not found / when there's no 1 to 1 mapping with the DOM elements and HTML.
+      In this case we need to use "attr."
+    -->
+    <table>
+      <tr>
+        <td [attr.colspan]="colSpan">Sum: $180</td>
+      </tr>
+    </table>
   `,
 })
 export class CoursesComponent {
   title = 'Mathematics';
   courseCount = '34';
   courses;
+  imageSrc = 'https://i.imgur.com/e32dxNq.png';
+  colSpan = 2;
 
   /**
    *
