@@ -26,6 +26,14 @@ import { Component } from '@angular/core';
         <td [attr.colspan]="colSpan">Sum: $180</td>
       </tr>
     </table>
+
+    <!-- Adding a bootstrap button -->
+    <div class="reg-div"><button class="btn btn-primary">Save</button></div>
+
+    <!-- Class binding -->
+    <div class="reg-div">
+      <button class="btn btn-secondary" [class.active]="isActive">Close</button>
+    </div>
   `,
 })
 export class CoursesComponent {
@@ -34,6 +42,7 @@ export class CoursesComponent {
   courses;
   imageSrc = 'https://i.imgur.com/e32dxNq.png';
   colSpan = 2;
+  isActive = true;
 
   /**
    *
