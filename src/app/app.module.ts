@@ -8,10 +8,23 @@ import { AppComponent } from './app.component';
 import { CoursesComponent } from './courses.component';
 import { CourseComponent } from './course/course.component';
 import { SummaryPipe } from './summary.pipe';
+import { FavouriteComponent } from './favourite/favourite.component';
+import {
+  FontAwesomeModule,
+  FaIconLibrary,
+} from '@fortawesome/angular-fontawesome';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import { far } from '@fortawesome/free-regular-svg-icons';
 
 @NgModule({
-  declarations: [AppComponent, CoursesComponent, CourseComponent, SummaryPipe],
-  imports: [BrowserModule, AppRoutingModule, FormsModule],
+  declarations: [
+    AppComponent,
+    CoursesComponent,
+    CourseComponent,
+    SummaryPipe,
+    FavouriteComponent,
+  ],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, FontAwesomeModule],
   providers: [
     /**
      * Adding the service to be used as a Dependency Injection.
@@ -21,4 +34,8 @@ import { SummaryPipe } from './summary.pipe';
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule {
+  constructor(library: FaIconLibrary) {
+    library.addIconPacks(fas, far);
+  }
+}
