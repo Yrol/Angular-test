@@ -131,6 +131,27 @@ import { Component } from '@angular/core';
       <h4>Two-way Binding</h4>
       <input [(ngModel)]="emailAddress" (keyup.enter)="onKeyUp2WayBinding()" />
     </div>
+
+    <!--
+      Pipes - used for formatting the display of Strings, currency and etc. Ex: display a string in all capital letters
+      In this example we change - uppercase, decimal points, number format, currency and date format
+    -->
+    <div class="reg-div">
+      <h4>Pipes</h4>
+      <div>
+        {{ course.title | uppercase }} <br />
+        {{ course.rating | number: '1.2-2' }} <br />
+        {{ course.students | number }} <br />
+        {{ course.price | currency: 'AUD' }} <br />
+        {{ course.releaseDate | date: 'shortDate' }} <br />
+      </div>
+    </div>
+
+    <!-- Custom pipes -->
+    <div class="reg-div">
+      <h4>Custom Pipes</h4>
+      {{ text | summary: 65 }}
+    </div>
   `,
 })
 export class CoursesComponent {
@@ -142,6 +163,15 @@ export class CoursesComponent {
   isActive = true;
   inputField = 'Hello';
   emailAddress = 'me@me.com';
+  course = {
+    title: 'Computer science',
+    rating: 4.545,
+    students: 456798,
+    price: 189.99,
+    releaseDate: new Date(2022, 1, 23),
+  };
+  text =
+    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.";
 
   /**
    *
