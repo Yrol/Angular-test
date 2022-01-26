@@ -24,15 +24,23 @@
   ></app-favourite>
 
   <!--
-    - Bootstrap panel/card component using ngContent
+    - Bootstrap panel/card component using ngContent and ngContainer
     - ngContent allows to provide/pass custom content to the reusable components
     - In this ex. the classes "heading" and "body" matches them via ng-content defined in "panel.component.html"
-    - In this ex. ng-content defined in "panel.component.html" will be replaced by <span> and <div>
+    - In this ex. ng-content defined in "panel.component.html" will be replaced by <span>
   -->
   <hr class="dashed" />
-  <h4>ngContent</h4>
+  <h4>ngContent and ngContainer</h4>
   <app-panel>
+    <!-- span will replace the ngContent by injecting a span -->
     <span class="heading">Heading</span>
-    <div class="body">Body</div>
+
+    <!-- ngContent will be replaced, however no html element will be injected -->
+    <ng-container class="body">
+      <h5 class="card-title">Special title treatment</h5>
+      <p class="card-text">
+        With supporting text below as a natural lead-in to additional content.
+      </p>
+    </ng-container>
   </app-panel>
 </div>
