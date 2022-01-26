@@ -7,8 +7,14 @@
 
   <hr class="dashed" />
   <h4>Favourite component</h4>
+
+  <!--
+    - Favourite component
+    - Using the aliases for input and output ("on-favorite-change" and "is-favourite") defined in "favourite.component.ts"
+    - Can also use the actual Input and Output variable names instead of the alias.
+  -->
   <app-favourite
     [is-favorite]="post.isFavourite"
-    (change)="onFavouriteChanged($event)"
+    (on-favorite-change)="onFavouriteChanged($event)"
   ></app-favourite>
 </div>

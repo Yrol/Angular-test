@@ -9,7 +9,7 @@ export class FavouriteComponent implements OnInit {
   /**
    * Input decorator
    * exposing "isFavourite" variable to the outside (available to the template of this component "favourite.component.html")
-   * Input Alias - adding the OPTIONAL alias, in this case 'is-favorite' that can be used by the consumer to pass the state (app.component.ts)
+   * Input Alias - adding an OPTIONAL alias, in this case 'is-favorite' that can be used by the consumer to pass the state (app.component.html)
    */
   @Input('is-favorite') isFavourite!: boolean;
 
@@ -17,8 +17,9 @@ export class FavouriteComponent implements OnInit {
    * Output decorator.
    * Used for raising custom events from the component.
    * In this case "onFavouriteChanged" in app.component.ts captures this event
+   * Output Alias - adding an OPTIONAL alias - "is-favorite-change" that is being used by "app.component.html" when consuming
    */
-  @Output() change = new EventEmitter();
+  @Output('on-favorite-change') changeEvent = new EventEmitter();
 
   constructor() {}
 
@@ -33,7 +34,7 @@ export class FavouriteComponent implements OnInit {
     //this.change.emit(this.isFavourite); // passing a simple boolean
 
     //passing an object
-    this.change.emit({ state: this.isFavourite });
+    this.changeEvent.emit({ state: this.isFavourite });
   }
 }
 
