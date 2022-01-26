@@ -1,9 +1,14 @@
 <div>
   <h1>Angular test</h1>
   <hr class="dashed" />
-  <h4>Course component</h4>
+  <h4>Courses component</h4>
   <courses></courses>
-  <app-course></app-course>
+
+  <hr class="dashed" />
+  <h4>
+    Courses component - example with passing values using an Input decorator
+  </h4>
+  <app-course [course-name]="'Mathematics'"></app-course>
 
   <hr class="dashed" />
   <h4>Favourite component</h4>
@@ -17,4 +22,17 @@
     [is-favorite]="post.isFavourite"
     (on-favorite-change)="onFavouriteChanged($event)"
   ></app-favourite>
+
+  <!--
+    - Bootstrap panel/card component using ngContent
+    - ngContent allows to provide/pass custom content to the reusable components
+    - In this ex. the classes "heading" and "body" matches them via ng-content defined in "panel.component.html"
+    - In this ex. ng-content defined in "panel.component.html" will be replaced by <span> and <div>
+  -->
+  <hr class="dashed" />
+  <h4>ngContent</h4>
+  <app-panel>
+    <span class="heading">Heading</span>
+    <div class="body">Body</div>
+  </app-panel>
 </div>

@@ -15,6 +15,7 @@ import {
 } from '@fortawesome/angular-fontawesome';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
+import { PanelComponent } from './panel/panel.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { far } from '@fortawesome/free-regular-svg-icons';
     CourseComponent,
     SummaryPipe,
     FavouriteComponent,
+    PanelComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, FontAwesomeModule],
   providers: [
