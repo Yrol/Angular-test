@@ -11,6 +11,7 @@ export class AppComponent {
     title: 'hello-world',
     isFavourite: true,
   };
+  viewType = 'list';
 
   /**
    * Custom event emit capture

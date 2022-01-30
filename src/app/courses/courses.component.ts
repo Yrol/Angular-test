@@ -9,7 +9,7 @@ import { CoursesService } from '../course.service';
 export class CoursesComponent {
   title = 'Mathematics';
   courseCount = '34';
-  courses;
+  courses = new Array();
   imageSrc = 'https://i.imgur.com/e32dxNq.png';
   colSpan = 2;
   isActive = true;
@@ -83,5 +83,13 @@ export class CoursesComponent {
 
   onKeyUp2WayBinding() {
     alert('Email address entered: ' + this.emailAddress);
+  }
+
+  onAdd() {
+    this.courses.push('course 4');
+  }
+
+  onRemove(courseIndex: number) {
+    this.courses.splice(courseIndex, 1);
   }
 }

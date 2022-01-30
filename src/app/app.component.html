@@ -43,4 +43,34 @@
       </p>
     </ng-container>
   </app-panel>
+
+  <!-- Switch Directive -->
+  <hr class="dashed" />
+  <h4>Switch directive</h4>
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a
+        class="nav-link"
+        [class.active]="viewType == 'map'"
+        aria-current="page"
+        (click)="viewType = 'map'"
+        href="#"
+        >Map</a
+      >
+    </li>
+    <li class="nav-item">
+      <a
+        class="nav-link"
+        [class.active]="viewType == 'list'"
+        (click)="viewType = 'list'"
+        href="#"
+        >List</a
+      >
+    </li>
+  </ul>
+  <div [ngSwitch]="viewType">
+    <div *ngSwitchCase="'map'">Map view content</div>
+    <div *ngSwitchCase="'list'">List view content</div>
+    <div *ngSwitchCaseDefault>List view content</div>
+  </div>
 </div>
