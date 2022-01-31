@@ -44,17 +44,46 @@
 <!-- Class binding -->
 <div class="reg-div">
   <h4>Class Binding</h4>
-  <button class="btn btn-secondary" [class.disabled]="disabled">Close</button>
+  <h6>Ex:1</h6>
+  <button class="btn btn-secondary" [class.disabled]="isDisabled">Close</button>
+
+  <!--
+    The ngClass will allow to combine multiple classes together into one block
+    As shown, 'disabled' and 'active' classes  have been added within ngClass
+  -->
+  <h6 class="mt-2">Ex:2 with ngClass</h6>
+  <button
+    class="btn btn-secondary"
+    [ngClass]="{ disabled: isDisabled, active: isActive }"
+  >
+    Close
+  </button>
 </div>
 
-<!-- Style binding. Supports all the Style DOM objects documented here: https://www.w3schools.com/jsref/dom_obj_style.asp -->
+<!--
+  Style binding. Supports all the Style DOM objects documented here: https://www.w3schools.com/jsref/dom_obj_style.asp
+  ngStyle - for bundling multiple styles together
+-->
 <div class="reg-div">
   <h4>Style Binding</h4>
+  <h6>Ex:1</h6>
   <button
     class="btn btn-secondary"
     [style.backgroundColor]="isActive ? '#33BEFF' : '#E3CD16'"
+    [style.color]="isActive ? 'black' : 'white'"
   >
     Deactivate
+  </button>
+
+  <h6 class="mt-2">Ex:2 with ngStyle</h6>
+  <button
+    class="btn btn-secondary"
+    [ngStyle]="{
+      backgroundColor: isActive ? '#33BEFF' : '#E3CD16',
+      color: isActive ? 'white' : 'black'
+    }"
+  >
+    Activate
   </button>
 </div>
 

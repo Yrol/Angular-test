@@ -11,6 +11,13 @@ export class AppComponent {
     title: 'hello-world',
     isFavourite: true,
   };
+
+  project = {
+    assignee: {
+      name: null,
+    },
+  };
+
   viewType = 'list';
 
   /**

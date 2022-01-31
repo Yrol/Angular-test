@@ -13,7 +13,7 @@ export class CoursesComponent {
   imageSrc = 'https://i.imgur.com/e32dxNq.png';
   colSpan = 2;
   isActive = true;
-  disabled = true;
+  isDisabled = true;
   inputField = 'Hello';
   emailAddress = 'me@me.com';
   course = {

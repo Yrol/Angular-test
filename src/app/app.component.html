@@ -53,7 +53,7 @@
         class="nav-link"
         [class.active]="viewType == 'map'"
         aria-current="page"
-        (click)="viewType = 'map'"
+        (click)="viewType = 'map'; $event.preventDefault()"
         href="#"
         >Map</a
       >
@@ -62,7 +62,7 @@
       <a
         class="nav-link"
         [class.active]="viewType == 'list'"
-        (click)="viewType = 'list'"
+        (click)="viewType = 'list'; $event.preventDefault()"
         href="#"
         >List</a
       >
@@ -73,4 +73,12 @@
     <div *ngSwitchCase="'list'">List view content</div>
     <div *ngSwitchCaseDefault>List view content</div>
   </div>
+
+  <!--
+    Safe Traversal Operator
+    Using "?" for Safe Traversal. This will helpful when the data is temporarily unavailable such as being loaded from a server.
+  -->
+  <hr class="dashed" />
+  <h4>Safe Traversal Operator</h4>
+  <span>{{ project.assignee?.name }}</span>
 </div>
