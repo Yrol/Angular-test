@@ -16,6 +16,7 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
 import { PanelComponent } from './panel/panel.component';
 import { CoursesComponent } from './courses/courses.component';
+import { InputFormatDirective } from './input-format.directive';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { CoursesComponent } from './courses/courses.component';
     SummaryPipe,
     FavouriteComponent,
     PanelComponent,
+    InputFormatDirective,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, FontAwesomeModule],
   providers: [

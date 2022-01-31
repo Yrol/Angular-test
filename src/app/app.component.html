@@ -81,4 +81,20 @@
   <hr class="dashed" />
   <h4>Safe Traversal Operator</h4>
   <span>{{ project.assignee?.name }}</span>
+
+  <!--
+    Custom directives
+  -->
+  <hr class="dashed" />
+  <h4>Custom directives</h4>
+
+  <div>
+    <h6>Ex1:without an attribute in the directive</h6>
+    <input type="text" appInputFormat />
+  </div>
+
+  <div class="mt-2">
+    <h6>Ex2:with an attribute attached in the directive</h6>
+    <input type="text" [appInputFormat]="'lowercase'" />
+  </div>
 </div>
