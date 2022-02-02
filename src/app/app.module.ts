@@ -17,6 +17,7 @@ import { far } from '@fortawesome/free-regular-svg-icons';
 import { PanelComponent } from './panel/panel.component';
 import { CoursesComponent } from './courses/courses.component';
 import { InputFormatDirective } from './input-format.directive';
+import { ContactFormComponent } from './contact-form/contact-form.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { InputFormatDirective } from './input-format.directive';
     FavouriteComponent,
     PanelComponent,
     InputFormatDirective,
+    ContactFormComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, FontAwesomeModule],
   providers: [

@@ -8,3 +8,7 @@ body {
 .reg-div {
   padding-top: 30px;
 }
+
+.form-control.ng-touched.ng-invalid {
+  border-color: rgb(228, 10, 10) !important;
+}

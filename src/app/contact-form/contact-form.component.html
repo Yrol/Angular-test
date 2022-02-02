@@ -1,0 +1,159 @@
+<!--
+  - Using the Template driven approach in forms using ngModel
+  - (change)="log(firstname)" being used for debugging purposes (will be logged to console upon interaction with the field).
+  - ngForm - can be applied to the entire for. Binding this manually to the form in order to get a reference to handle submit & etc (using ngSubmit & etc). https://angular.io/api/forms/NgForm
+  - ngModelGroup -  can be applied to the subgroups of teh form. Ex: contact, address & etc.
+  - ngModel - can be applied to the individual input fields of the form
+-->
+<form #f="ngForm" (ngSubmit)="onSubmit(f)">
+  <!--
+    - Using ngModelGroup
+    - ngModelGroup will create a group and properties inside it in the submit object (value): ex: 'contact' => ['firstname':yrol, lastname:'fernando']
+  -->
+  <div ngModelGroup="contact" #contact="ngModelGroup">
+    <div *ngIf="contact.touched && !contact.valid">
+      Invalid detected - ngModelGroup error detection
+    </div>
+    <div class="form-group">
+      <label for="firstname">First Name</label>
+      <input
+        ngModel
+        name="firstname"
+        required
+        minlength="3"
+        maxlength="10"
+        id="firstname"
+        type="text"
+        class="form-control"
+        #firstname="ngModel"
+        (change)="firstnameLog(firstname)"
+      />
+      <div
+        class="alert alert-danger mt-2"
+        *ngIf="!firstname.valid && firstname.touched"
+      >
+        <div *ngIf="firstname.errors?.['required']">First name is required</div>
+        <div *ngIf="firstname.errors?.['minlength']">
+          Minimum length of
+          {{ firstname.errors?.['minlength']?.['requiredLength']}} characters
+          required
+        </div>
+        <div *ngIf="firstname.errors?.['maxlength']">
+          Maximum length of only
+          {{ firstname.errors?.['maxlength']?.['requiredLength']}} characters
+          characters allowed.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Without using ngModelGroup-->
+  <div class="form-group mt-2">
+    <label for="comment">Comment</label>
+    <textarea
+      ngModel
+      name="comment"
+      required
+      id="comment"
+      cols="30"
+      rows="10"
+      class="form-control"
+      #comment="ngModel"
+    ></textarea>
+    <div
+      class="alert alert-danger mt-2"
+      *ngIf="!comment.valid && comment.touched"
+    >
+      Please enter your comment
+    </div>
+  </div>
+
+  <!-- Checkbox-->
+  <div class="checkbox form-group mt-2">
+    <label
+      ><input type="checkbox" ngModel name="isSubscribed" /> Subscribe to
+      mailing box
+    </label>
+  </div>
+
+  <!-- List -->
+  <div class="form-group mt-2">
+    <!-- with normal value-->
+    <label for="contactMethod1" class="contactMethod1">
+      Contact Method ex:1 - List wit normal value binding
+    </label>
+    <select
+      class="form-select"
+      ngModel
+      name="contactMethod1"
+      id="contactMethod1"
+    >
+      <option *ngFor="let method of contactMethods" [value]="method.id">
+        {{ method.name }}
+      </option>
+    </select>
+
+    <!-- With ngValue - unlike normal value, this will allow to bind the corresponding object to each option-->
+    <label for="contactMethod2" class="contactMethod2">
+      Contact Method ex:2 - List with ngValue binding
+    </label>
+    <select
+      class="form-select"
+      ngModel
+      name="contactMethod2"
+      id="contactMethod2"
+    >
+      <option *ngFor="let method of contactMethods" [ngValue]="method">
+        {{ method.name }}
+      </option>
+    </select>
+
+    <!-- With ngValue - unlike normal value, this will allow to bind the corresponding object to each option-->
+    <label for="contactMethod3" class="contactMethod3">
+      Contact Method ex:3 - Multiple select
+    </label>
+    <select
+      class="form-select"
+      ngModel
+      multiple
+      name="contactMethod3"
+      id="contactMethod3"
+    >
+      <option *ngFor="let method of contactMethods" [value]="method.id">
+        {{ method.name }}
+      </option>
+    </select>
+  </div>
+
+  <!-- Radio button -->
+  <div class="form-group mt-2">
+    <label>Radio button ex:1</label>
+    <div class="radio">
+      <label for="">
+        Male
+        <input ngModel type="radio" name="gender" value="1" />
+      </label>
+    </div>
+    <div class="radio">
+      <label for="">
+        Female
+        <input ngModel type="radio" name="gender" value="2" />
+      </label>
+    </div>
+  </div>
+
+  <div class="form-group mt-2">
+    <label>Radio button ex:2</label>
+    <div class="radio" *ngFor="let country of countries">
+      <label for="">
+        {{ country.name }}
+        <input ngModel type="radio" name="country" [value]="country.id" />
+      </label>
+    </div>
+  </div>
+
+  <p class="mt-2">{{ f.value | json }}</p>
+
+  <!-- Enable and disable submit button based on ngForm valid state-->
+  <button class="btn btn-primary mt-1" [disabled]="!f.valid">Submit</button>
+</form>

@@ -154,8 +154,11 @@
   Communicate between component and view on both directions (as opposed to property binding which is only component to view communication only)
 -->
 <div class="reg-div">
-  <h4>Two-way Binding</h4>
-  <input [(ngModel)]="emailAddress" (keyup.enter)="onKeyUp2WayBinding()" />
+  <h4>Two-way Binding using ngModel</h4>
+  <div>
+    <input [(ngModel)]="emailAddress" (keyup.enter)="onKeyUp2WayBinding()" />
+  </div>
+  <div>{{ emailAddress }}</div>
 </div>
 
 <!--
