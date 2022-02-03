@@ -19,6 +19,7 @@ import { CoursesComponent } from './courses/courses.component';
 import { InputFormatDirective } from './input-format.directive';
 import { ContactFormComponent } from './contact-form/contact-form.component';
 import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.component';
+import { ReactiveFormsDynamicComponent } from './reactive-forms-dynamic/reactive-forms-dynamic.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.componen
     InputFormatDirective,
     ContactFormComponent,
     ReactiveFormsComponent,
+    ReactiveFormsDynamicComponent,
   ],
   imports: [
     BrowserModule,
