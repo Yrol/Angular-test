@@ -30,6 +30,7 @@ export class ReactiveFormsDynamicComponent {
   }
 
   removeTopic(topic: AbstractControl) {
+    console.log(topic);
     let index = this.topics.controls.indexOf(topic);
     this.topics.removeAt(index);
   }

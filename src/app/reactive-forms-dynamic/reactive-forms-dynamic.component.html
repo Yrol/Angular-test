@@ -11,9 +11,15 @@
       placeholder="Type a topic and enter"
     />
     <ul class="list-group" *ngFor="let topic of topics.controls">
-      <li class="list-group-item" (click)="removeTopic(topic)">
-        {{ topic.value }}>
-        <button type="button" class="btn btn-primary">Remove</button>
+      <li class="list-group-item">
+        {{ topic.value }}
+        <button
+          type="button"
+          (click)="removeTopic(topic)"
+          class="btn btn-danger btn-sm"
+        >
+          Remove
+        </button>
       </li>
     </ul>
   </div>

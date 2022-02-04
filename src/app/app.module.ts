@@ -1,7 +1,9 @@
+import { AppErrorHandler } from './common/app-error-handler';
 import { CoursesService } from './course.service';
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,6 +22,8 @@ import { InputFormatDirective } from './input-format.directive';
 import { ContactFormComponent } from './contact-form/contact-form.component';
 import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.component';
 import { ReactiveFormsDynamicComponent } from './reactive-forms-dynamic/reactive-forms-dynamic.component';
+import { PostComponentComponent } from './post-component/post-component.component';
+import { PostsService } from './services/posts.service';
 
 @NgModule({
   declarations: [
@@ -33,6 +37,7 @@ import { ReactiveFormsDynamicComponent } from './reactive-forms-dynamic/reactive
     ContactFormComponent,
     ReactiveFormsComponent,
     ReactiveFormsDynamicComponent,
+    PostComponentComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,6 +45,7 @@ import { ReactiveFormsDynamicComponent } from './reactive-forms-dynamic/reactive
     FormsModule,
     ReactiveFormsModule,
     FontAwesomeModule,
+    HttpClientModule,
   ],
   providers: [
     /**
@@ -47,6 +53,10 @@ import { ReactiveFormsDynamicComponent } from './reactive-forms-dynamic/reactive
      * Singleton: Only one instance of this service will be created and will use that across all other components when needed.
      */
     CoursesService,
+    PostsService,
+
+    //Replacing the in-built error handler class - 'ErrorHandler' with the custom error handler class - 'AppErrorHandler'
+    { provide: ErrorHandler, useClass: AppErrorHandler },
   ],
   bootstrap: [AppComponent],
 })

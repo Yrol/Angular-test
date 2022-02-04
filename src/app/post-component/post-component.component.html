@@ -1,0 +1,35 @@
+<!--
+  - Show posts from fetched from the server
+  - Show only the first 5 items of the list
+-->
+<form [formGroup]="form">
+  <div class="form-group">
+    <input
+      (keyup.enter)="createPost(post)"
+      type="text"
+      id="post"
+      #post
+      class="form-control"
+      placeholder="Type post title and enter"
+    />
+  </div>
+</form>
+
+<ul class="list-group mt-2">
+  <li
+    *ngFor="let post of posts | slice: 0:5; let i = index"
+    class="list-group-item"
+  >
+    {{ post.title }}
+    <button (click)="updatePost(post)" class="btn btn-primary btn-sm">
+      Update
+    </button>
+    <button
+      type="button"
+      (click)="deletePost(post)"
+      class="btn btn-danger btn-sm"
+    >
+      Remove
+    </button>
+  </li>
+</ul>
