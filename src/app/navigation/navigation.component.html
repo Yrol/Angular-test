@@ -1,0 +1,19 @@
+<!-- Demonstrate routes and query params-->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li routerLinkActive="active current" class="nav-item">
+        <a class="nav-link" routerLink="/">Home</a>
+      </li>
+      <li routerLinkActive="active current" class="nav-item">
+        <!-- Sending query params to the Followers page-->
+        <a
+          class="nav-link"
+          routerLink="/followers"
+          [queryParams]="{ page: 1, orderBy: 'newest' }"
+          >Followers</a
+        >
+      </li>
+    </ul>
+  </div>
+</nav>

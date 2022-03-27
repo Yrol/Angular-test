@@ -1,9 +1,14 @@
+import { NotFoundComponent } from './not-found/not-found.component';
+import { NavigationComponent } from './navigation/navigation.component';
+import { FollowersComponent } from './followers/followers.component';
+import { HomeComponent } from './home/home.component';
 import { AppErrorHandler } from './common/app-error-handler';
-import { CoursesService } from './course.service';
+import { CoursesService } from './services/course.service';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { RouterModule, Routes } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -24,6 +29,7 @@ import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.componen
 import { ReactiveFormsDynamicComponent } from './reactive-forms-dynamic/reactive-forms-dynamic.component';
 import { PostComponentComponent } from './post-component/post-component.component';
 import { PostsService } from './services/posts.service';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +44,10 @@ import { PostsService } from './services/posts.service';
     ReactiveFormsComponent,
     ReactiveFormsDynamicComponent,
     PostComponentComponent,
+    NavigationComponent,
+    HomeComponent,
+    FollowersComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,7 +56,27 @@ import { PostsService } from './services/posts.service';
     ReactiveFormsModule,
     FontAwesomeModule,
     HttpClientModule,
+
+    /**
+     * Routes
+     * forRoot static method for defining the root routed. For child routes we use "forChild()"
+     * Order of the routes is important. Ex: if we place the wildcard (**) Not found route at the beginning, it'll show that all the time.
+     */
+    RouterModule.forRoot([{ path: '', component: HomeComponent }]),
+    RouterModule.forRoot([
+      { path: 'followers/:userId/:username', component: ProfileComponent },
+    ]),
+    RouterModule.forRoot([
+      { path: 'followers', component: FollowersComponent },
+    ]),
+    RouterModule.forRoot([
+      { path: 'posts', component: PostComponentComponent },
+    ]),
+
+    //using the wildcard to signify anything not within teh specified routes will be directed to this page
+    RouterModule.forRoot([{ path: '**', component: NotFoundComponent }]),
   ],
+  entryComponents: [],
   providers: [
     /**
      * Adding the service to be used as a Dependency Injection.

@@ -1,0 +1,17 @@
+<div class="mt-2">
+  <h3>Followers</h3>
+  <div class="mt-2">
+    <p *ngIf="page">Page: {{ page }}</p>
+    <p *ngIf="orderBy">Order By: {{ orderBy }}</p>
+  </div>
+  <ul class="list-group mt-2">
+    <li *ngFor="let follower of followers" class="list-group-item">
+      <!-- Using the property binding syntax of routerLink for dynamic links -->
+      <a
+        [routerLink]="['/followers', follower.id, follower.username]"
+        class="link-primary"
+        >{{ follower.name }}</a
+      >
+    </li>
+  </ul>
+</div>
